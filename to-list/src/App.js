@@ -1,64 +1,70 @@
 import React, { Component } from 'react'
 import './App.css';
-/*
-function App() {
-  return (
-    
-    <div className="App">
-      <section className="App-left">
-      <h1>To list</h1>
-      <input type="text" placeholder={}></input> 
-      </section>
-      <section className="App-right">
 
-      </section>
-    </div>
-  );
+class Inputs extends Component{
+  render() {
+    return(
+      <input type= "text"> </input>,
+      <button>Cambiar</button>
+    
+      )}
 }
-*/
 
 class App extends Component {
   
-  state = {
-    listado: [],
-    variable: ""
-  
-  
+  state = { 
+    variable: ''
   }
-  guardar = (event)=> {
-    this.variable = event.target.value
+
+
+
+  add = (event) => {
+
+    const variable = event.target.value
+    this.setState({ variable })
 
   }
-  agregar = () => {
-    this.setState(state => ({
-      listado: this.state.listado.push(this.guardar.variable)
-    }))  
-    console.log(this.variable)
-    
+
+
+  agregar = (event) => {
+    event.preventDefault()
+      this.setState({
+      
+    })
   }
+
+
+
+
+
 
   render() {
     return(
     
-    <div className="App">
+    <form className="App">
       <section className="App-left">
         <h1>To list</h1>
-        <input type="text" className="prueba" onChange={this.guardar} ></input> 
-        <button
-          onClick={this.agregar} 
-        >
+        <input
+          type="text" 
+          onChange={this.add}
+          value={this.state.variable}
+        ></input> 
+        <button onClick={this.agregar}>
           Submit
         </button>
-        <h1>{this.state.listado}</h1>
+
+        <h2>{this.state.variable}</h2>
+        <h3>{this.state.listado}</h3>
       </section>
       
       
       <section className="App-right">
-      {/*iterar listado del state y agregar inputs dependiendo de la cantidad de posiciones */}
+        <Inputs/>
+        
 
 
       </section>
-    </div>
+    </form>
   
     )
   }
