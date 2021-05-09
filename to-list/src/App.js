@@ -14,7 +14,10 @@ class Inputs extends Component{
   render() {
     return(
       <div>
-        <input type= "text" value = {this.state.lista}></input>
+        <input type= "text"
+         value = {this.state.lista}
+        
+        />
         <button onClick={this.edit}>Cambiar</button>
       </div>
       
@@ -28,25 +31,25 @@ class Inputs extends Component{
 class App extends Component {
   
   state = { 
-    variable: ''
+    text: '',
+    click: 0
   }
 
 
 
   add = (event) => {
 
-    const variable = event.target.value
-    this.setState({ variable })
+    const text = event.target.value
+    this.setState({ text })
 
   }
 
-  // este metodo tiene que usar el componente Inputs en la otra section app-Left.
-  // el valor del input del componente Inputs tiene que ser el valor del state del componente padre.
-  // 
+  // el valor del input del componente Inputs tiene que ser el valor del state del componente padre. 
   agregar = (event) => {
     event.preventDefault()
+    const click = this.state.click + 1
+    this.setState({click}) 
 
-//    return(<Inputs/>)
 
   }
 
@@ -55,6 +58,11 @@ class App extends Component {
     
     <form className="App">
       <section className="App-left">
+        {/*incluir condicion se renderiza el componente inputs la cantidad de click que tiene el state del componente app(componente padre).
+        El valor de cada input puede ser sacado del state del componente en un array 
+        
+        */}
+        
         <Inputs/>
       
       
@@ -66,14 +74,14 @@ class App extends Component {
         <input
           type="text" 
           onChange={this.add}
-          value={this.state.variable}
+          value={this.state.text}
         ></input> 
         <button onClick={this.agregar}>
           Submit
         </button>
 
-        <h2>{this.state.variable}</h2>
-
+        <h2>{this.state.text}</h2>
+        <h3>{this.state.click}</h3>
       </section>
     </form>
   
