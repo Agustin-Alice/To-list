@@ -1,9 +1,29 @@
 import React, { Component } from 'react'
 import './App.css';
 
-class Inputs extends Component{
+const Inputs = (props) => {
+
+  let list = []
+  list.push(props.valores)
+  
+  
+  return(
+    <div >
+      <input type = 'text' value = {list}/>
+      <button>edit</button>
+    
+    </div>
+    
+     
+
+  )
+}
+
+
+
+/*class Inputs extends Component{
   state  = {
-    lista : ['']
+    lista : []
     
   }
   
@@ -15,7 +35,7 @@ class Inputs extends Component{
     return(
       <div>
         <input type= "text"
-         value = {this.state.lista}
+         value = {this.state.lista[0]}
         
         />
         <button onClick={this.edit}>Cambiar</button>
@@ -23,7 +43,7 @@ class Inputs extends Component{
       
 
     )}
-}
+}*/
 
 
 
@@ -32,7 +52,7 @@ class App extends Component {
   
   state = { 
     text: '',
-    click: 0
+    cant_items: 0
   }
 
 
@@ -47,8 +67,8 @@ class App extends Component {
   // el valor del input del componente Inputs tiene que ser el valor del state del componente padre. 
   agregar = (event) => {
     event.preventDefault()
-    const click = this.state.click + 1
-    this.setState({click}) 
+    const cant_items = this.state.cant_items + 1
+    this.setState({cant_items}) 
 
 
   }
@@ -63,7 +83,9 @@ class App extends Component {
         
         */}
         
-        <Inputs/>
+        <Inputs
+        valores= {this.state.text}
+        />
       
       
       </section>
@@ -81,7 +103,7 @@ class App extends Component {
         </button>
 
         <h2>{this.state.text}</h2>
-        <h3>{this.state.click}</h3>
+        <h3>{this.state.cant_items}</h3>
       </section>
     </form>
   
