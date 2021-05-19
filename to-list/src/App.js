@@ -6,20 +6,23 @@ const Inputs = (props) => {
   /*list.map((texto) => {
     
   })*/
+      const { valores} = props
 
-  props.list.forEach((valor) => {
-    return(
-      <div >
-        <input type = 'text' value = {valor}/>
-        <button>edit</button>
+      valores.forEach((valor) => {
+        return(
+          <div>
+            <input
+            type = 'text'
+            value = {valor}
+            />
+            <button>edit</button>
+          
+          </div>
+        )
+
+      })
+        
       
-      </div>
-      
-       
-  
-    )
-  })
-  
 }
 
 
@@ -52,19 +55,11 @@ const Inputs = (props) => {
 
 
 class App extends Component {
-  
+
   state = { 
     text: '',
     list: []
   }
-
-  post = () => {
-    let text = this.text
-    this.state.list.push(text)
-    console.log(this.state.list)
-
-  }
-
 
   add = (event) => {
 
@@ -76,7 +71,9 @@ class App extends Component {
   // el valor del input del componente Inputs tiene que ser el valor del state del componente padre. 
   agregar = (event) => {
     event.preventDefault()
-    this.post()
+    this.state.list.push(this.state.text)
+    const list = this.state.list
+    this.setState({ list })
   }
 
   render() {
@@ -97,13 +94,10 @@ class App extends Component {
         <input
           type="text" 
           onChange={this.add}
-          value={this.state.text}
         ></input> 
         <button onClick={this.agregar}>
           Submit
         </button>
-
-        <h2>{this.state.text}</h2>
       </section>
     </form>
   
