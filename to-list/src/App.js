@@ -2,13 +2,9 @@ import { render } from '@testing-library/react';
 import React, { Component } from 'react'
 import './App.css';
  
-const Inputs = (props) => {  
-  /*list.map((texto) => {
-    
-  })*/
-      const { valores} = props
-
-      valores.forEach((valor) => {
+const Inputs = (props) => {
+      const {valores} = props
+      valores.map((valor) => {
         return(
           <div>
             <input
@@ -19,39 +15,10 @@ const Inputs = (props) => {
           
           </div>
         )
-
       })
         
       
 }
-
-
-
-/*class Inputs extends Component{
-  state  = {
-    lista : []
-    
-  }
-  
-  edit = () => {
-    alert("Quiere modificarlo?")
-  }
-  
-  render() {
-    return(
-      <div>
-        <input type= "text"
-         value = {this.state.lista[0]}
-        
-        />
-        <button onClick={this.edit}>Cambiar</button>
-      </div>
-      
-
-    )}
-}*/
-
-
 
 
 class App extends Component {
@@ -68,7 +35,6 @@ class App extends Component {
 
   }
 
-  // el valor del input del componente Inputs tiene que ser el valor del state del componente padre. 
   agregar = (event) => {
     event.preventDefault()
     this.state.list.push(this.state.text)
