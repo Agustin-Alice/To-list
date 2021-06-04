@@ -3,21 +3,27 @@ import React, { Component } from 'react'
 import './App.css';
  
 const Inputs = (props) => {
-      const {valores} = props
-      valores.map((valor) => {
-        return(
-          <div>
-            <input
-            type = 'text'
-            value = {valor}
-            />
-            <button>edit</button>
-          
-          </div>
-        )
-      })
-        
+  const {valores} = props
+  const modify = (event) => {
+    event.preventDefault()
+    prompt('Que mierda queres poner?', )
+    //onSend
+  }
+  let result = valores.map((valor) => {
+    return(
+      <div>
+        <input
+        type = 'text'
+        value = {valor}
+        />
+        <button
+        onClick = {this.modify}
+        >edit</button>
+      </div>
       
+    )
+  }) 
+  return result
 }
 
 
