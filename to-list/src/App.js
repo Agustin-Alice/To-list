@@ -89,6 +89,7 @@ class Items extends Component {
           />
           <button
           onClick = {this.edit}
+          id = {valor.id}
           >edit</button>
         </div>
         
