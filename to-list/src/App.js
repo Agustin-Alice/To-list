@@ -7,7 +7,8 @@ class App extends Component {
 
   state = {
     text: '',
-    list: []
+    list: [],
+    lista: []
   }
 
 
@@ -22,8 +23,7 @@ class App extends Component {
 
   agregar = (event) => {
     event.preventDefault()
-    let {list, text} = this.state    
-    var lista = [] 
+    let {list, text, lista} = this.state    
     lista.push(text)
     list = lista.map((item, index) => {      
       item = ({name: item, id:index})
@@ -43,9 +43,6 @@ class App extends Component {
         type='text'
         valores= {this.state.list}
         />      
-        <div>
-          {this.state.list}
-        </div>
       </section>
       
       
@@ -89,7 +86,6 @@ class Items extends Component {
           />
           <button
           onClick = {this.edit}
-          id = {valor.id}
           >edit</button>
         </div>
         
