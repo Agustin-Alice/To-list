@@ -11,26 +11,26 @@ class App extends Component {
     lista: []
   }
 
-
-
-
   add = (event) => {
-
     const text = event.target.value
     this.setState({ text })
-
   }
 
   agregar = (event) => {
     event.preventDefault()
     let {list, text, lista} = this.state    
     lista.push(text)
-    list = lista.map((item, index) => {      
+    list = lista.map((item, index) => {
       item = ({name: item, id:index})
       return item
     })   
-    console.log(list)
     this.setState({ list })
+  }
+
+  actualizar = (valores) => {
+    let list = valores
+    this.setState({ list})
+    console.log(list)   
   }
 
 
@@ -42,6 +42,7 @@ class App extends Component {
         <Items
         type='text'
         valores= {this.state.list}
+        onChange= {this.actualizar}
         />      
       </section>
       
@@ -64,15 +65,13 @@ class App extends Component {
 
 class Items extends Component {
 
-  state = {
-    cambio: '',
-  
-  }
-
   edit = (event) => {
     event.preventDefault()
     let cambio = prompt('Que queres poner?')
-    this.setState({ cambio })
+    var {valores} = this.props
+    console.log(event.target.id)
+    valores[event.target.id].name = cambio
+    this.props.onChange(valores)
   }
   
   render(){
@@ -86,6 +85,7 @@ class Items extends Component {
           />
           <button
           onClick = {this.edit}
+          id = {valor.id}
           >edit</button>
         </div>
         
