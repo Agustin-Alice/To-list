@@ -8,12 +8,14 @@ class App extends Component {
   state = {
     text: '',
     list: [],
-    lista: []
+    lista: [],
+    
   }
 
   add = (event) => {
     const text = event.target.value
     this.setState({ text })
+
   }
 
   agregar = (event) => {
@@ -23,8 +25,10 @@ class App extends Component {
     list = lista.map((item, index) => {
       item = ({name: item, id:index})
       return item
-    })   
+    })
     this.setState({ list })
+    this.setState({text:''})
+    
   }
 
   actualizar = (valores) => {
@@ -52,7 +56,8 @@ class App extends Component {
         <input
           type='text'
           onChange={this.add}
-        ></input> 
+          value={this.state.text}
+        /> 
         <button onClick={this.agregar}>
           Submit
         </button>
@@ -98,30 +103,3 @@ class Items extends Component {
 
 
 export default App;
-
-
-
-
-/*const Inputs = (props) => {
-  const {valores} = props
-  const funtion = (event) => {
-    event.preventDefault()
-    let cambio = prompt('Que mierda queres poner?')
-    
-  }
-  let result = valores.map((valor) => {
-    return(
-      <div>
-        <input
-        type = 'text'
-        value = {valor}
-        />
-        <button
-        onClick = {funtion}
-        >edit</button>
-      </div>
-      
-    )
-  }) 
-  return result
-}*/
